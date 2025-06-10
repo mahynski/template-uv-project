@@ -5,39 +5,41 @@ How To Use
 
 1. Use this repo as a template to create a new repo on GitHub. Name the repo with a 4 digit year-of-initiation prefix, e.g., "2022-". Convention is to use hyphens between words and all lower case.
 2. Insert description here.
-3. Clone your new repo locally to get started. Create a [conda](https://www.anaconda.com/) environment for this project.  First modify `conda-env.yml` to include the relevant repositories and dependencies needed; also give the environment a good name (e.g., similar or same as this repo) - the default is "project-env". Then create the environment (see below).
-4. If you do not want to work in a development container, skip to "Local Installation" to use a conda environment on your local machine.
-5. Otherwise, a Docker [dev container](https://code.visualstudio.com/docs/devcontainers/containers) template for [VS Code](https://code.visualstudio.com/) is provided in the `.devcontainer/` folder.  This creates a [miniconda](https://docs.anaconda.com/miniconda/) container and installs the environment specified in `conda-env.yml` into the default IPython kernel in the container. To use:
+3. Clone your new repo locally to get started. Python environments are managed using [uv](https://docs.astral.sh/uv/) instead of [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). This makes installations faster, but is a little more manual. In the conda variant, a Jupyter notebook server is created in the base environment while a kernel for each environment is installed so notebooks can access different environments through a central server.  This is not possible at the moment so Jupyter servers have to be spun up inside each environment, if there are multiple.
+4. Modify `.devcontainer/project-env.requirements` to include the relevant repositories and dependencies needed.  You can rename `project-env`, if you want but be sure to modify `setup.sh` accordingly.  You can also create other environments easily by creating new `.devcontainer/*.requirements` files (the names of environments are inferred from the name of this file).
+5. If you do not want to work in a development container, skip to "Local Installation" to use a python virtual environment on your local machine.
+6. Otherwise, a Docker [dev container](https://code.visualstudio.com/docs/devcontainers/containers) template for [VS Code](https://code.visualstudio.com/) is provided in the `.devcontainer/` folder.  This creates your virtual environment(s) automatically. To use:
    * Change the `UID` and `GID` in `.devcontainer/Dockerfile` if needed.
    * Optional: If you want to connect to other containers, e.g., running ollama for code assitance in [Continue](https://docs.continue.dev/), you might need to consider [Docker networking](https://docs.docker.com/engine/network/tutorials/standalone/). You can skip this in which case ollama will bind to your localhost at your chosen port on the default "bridge" network, which is acceptable on personal devices.
    * Add [additional arguments](https://containers.dev/implementors/json_reference/) as needed, e.g., "runArgs": ["--gpus", "all"] to [access host gpus](https://stackoverflow.com/questions/25185405/using-gpu-from-a-docker-container). This is helpful if you are doing deep learning in the container/project. You may have to install the appropriate drivers first.
-   * Change the name of the conda environment (default="project-env") in the `conda-env.yml` and files in .devcontainer/.
    * Install the "Dev Containers" Extension in VS Code.
    * First `git clone` this repo, then [open the folder in the container](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container) by selecting "Dev Containers: Open Folder in Container" from the Command Palette.
-   * From a terminal in VS Code, (1) navigate to your desired starting point (`data/analysis` is recommended), then (2) run `$ bash /path/to/.devcontainer/start_jupyter.sh` to launch a Jupyter server (forwarded on port 1234 by default) from the head of the repo.  The default kernel contains the `conda-env.yml` packages but is not renamed.
+7. Then run `bash .devcontainer/setup.sh` to create the python virtual environment(s).
+8. From a terminal in VS Code, (1) navigate to your desired starting point (`data/analysis` is recommended), then (2) run `$ bash /path/to/.devcontainer/start_jupyter.sh` to launch a Jupyter server (forwarded on port 1234 by default) from the head of the repo in the default environment (`project-env`).  You can modify or duplicate as needed for other environments.
 
 Local Installation
 ---
 
-Set up the conda environment for this project. You will need to install the environment in your Jupyter to use it (third command below). Change the name of the conda environment (default="project-env") in the `conda-env.yml` if you wish.
+You can run the setup script outside of a devcontainer to install these environments on your local machine instead.
 
 ```code
-$ conda env create -f conda-env.yml
-$ conda activate project-env
-$ python -m ipykernel install --user --name=project-env
+$ bash .devcontainer/setup.sh
+$ source .project-env/bin/activate
 ```
 
-At the end of a project it is good practice to export the entire conda environment for posterity, especially if not working in a development container.
+At the end of a project it is good practice to export the entire environment to a lockfile for posterity, especially if not working in a development container.
+
 ```code
-$ conda env export > environment.yml
+$ source .project-env/bin/activate
+$ uv pip freeze > requirements.in
+$ uv pip compile requirements.in > requirements.txt
 ```
 
-This environment can be recreated later; the `conda-env.yml` file can also be exchanged for this, but I prefer to keep both as a record.
+This environment can be recreated later.
+
 ```code
-$ conda env create -f environment.yml
+$ uv pip install -r requirements.txt
 ```
-
-This works for many cases, but if you need an *exactly reproducible* environment use [conda-lock](https://github.com/conda/conda-lock) instead.
 
 Contributors
 ---
