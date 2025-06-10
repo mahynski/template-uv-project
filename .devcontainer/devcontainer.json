@@ -3,7 +3,7 @@
 // Docker Desktop configuration for GPUs: https://docs.docker.com/desktop/features/gpu/
 // Accessing GPUs in VSCode devcontainer: https://stackoverflow.com/questions/72129213/using-gpu-in-vs-code-container
 {
-    "name": "Jupyter Env",
+    "name": "Environment",
     "runArgs": [
 	"--gpus",
 	"all", // If gpus are present this enables docker to see them; if using windows, be sure docker(desktop) is correctly configured (see link above)
