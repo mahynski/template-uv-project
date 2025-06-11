@@ -1,5 +1,9 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
-# RUN apt update -y
+
+# Need git and build-essential (provides gcc compiler) for pre-commit
+RUN apt update -y \
+ && apt install git -y \
+ && apt install build-essential -y
 
 # Create a user with a given User and Group ID
 # https://vsupalov.com/docker-shared-permissions/
