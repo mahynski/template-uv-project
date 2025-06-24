@@ -40,6 +40,16 @@ This environment can be recreated later.
 $ uv pip install -r requirements.txt
 ```
 
+Accessing Endpoints
+---
+You may need to add a `.cert` file to access certain resources on a local network to avoid a "self-signed certificate" error.  [One solution](https://gist.github.com/anhldbk/8ef2d465152dd4b31429725f4534603f) is to:
+
+~~~bash
+$ export SSL_CERT_FILE=/path/to/file.crt
+~~~
+
+This `.crt` file can be stored in the `.ignore/` folder if necessary.
+
 Contributors
 ---
 
