@@ -27,6 +27,7 @@ $ source .project-env/bin/activate
 ```
 
 At the end of a project it is good practice to export the entire environment to a lockfile for posterity, especially if not working in a development container.
+uv has good [documentation](https://docs.astral.sh/uv/pip/compile/#locking-requirements) as well.
 
 ```code
 $ source .project-env/bin/activate
