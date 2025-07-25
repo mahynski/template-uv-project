@@ -2,7 +2,7 @@
 
 ## Initial Setup
 
-<img src="logo.png" align="right" width=180 />
+<img src="logo.png" align="right" width=200 />
 
 1. Use this repo as a template to create a new repo on GitHub. Name the repo with a 4 digit year-of-initiation prefix, e.g., "2022-". Convention is to use hyphens between words and all lower case. You can also "copy" the repo by cloning, creating a new origin, then pushing to it. This can be used to, e.g., migrate to a GitLab server.
 
