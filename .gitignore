@@ -7,6 +7,5 @@ __pycache__
 *.Python
 *.cache
 /**/.ipynb_checkpoints/
-data/raw/*
 .ignore/*
 *.venv/*
