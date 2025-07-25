@@ -1,5 +1,5 @@
 #!/bin/bash
-# Activate your virtual environment, then call this file. MLFlow is installed in each by default.
+source "$(dirname "$(realpath "$0")")/../.venv/bin/activate";
 head_path="$(dirname "$(realpath "$0")")/mlflow";
 mkdir -p $head_path;
 backend_path="$head_path/mlruns.db";
