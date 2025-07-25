@@ -1,12 +1,9 @@
 #!/bin/bash
-# Add new .requirements files for each new environment desired
-head_path="$(dirname "$(realpath "$0")")/";
-for FILENAME in $(ls $head_path/*.requirements); do
-    ENV_NAME=$(basename "$FILENAME" .requirements)
-    uv venv $head_path/../.$ENV_NAME --python=3.12
-    source $head_path/../.$ENV_NAME/bin/activate
-    uv pip install pre-commit mlflow jupyterlab pydantic-settings # Always install these
-    uv pip install -r $FILENAME
-    pre-commit install
-    deactivate
-done
+devcontainer_path="$(dirname "$(realpath "$0")")/"
+requirements="$devcontainer_path/requirements.txt"
+root="$devcontainer_path/../"
+cd $root
+uv init
+rm main.py
+uv add mlflow jupyterlab pydantic-settings
+uv add -r $requirements
