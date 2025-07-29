@@ -46,7 +46,7 @@
 
 ~~~bash
 $ cd projects/
-$ uv init new_project # Creates new project root directory projects/new_project
+$ uv init new_project --bare --no-workspace # Creates new project root directory projects/new_project
 $ cd new_project
 ~~~
 
@@ -86,7 +86,7 @@ You can also create a [new python **package**](https://docs.astral.sh/uv/concept
 
 ~~~bash
 $ cd projects/new_project
-$ uv init --package my_new_package # Create a new package
+$ uv init --package my_new_package --no-workspace # Create a new package
 $ ... # Modify this as needed
 $ uv run my_new_package # Installs package into new_project and executes the main() function
 ~~~
@@ -110,7 +110,7 @@ If you are using this inside a devcontainer you will need to add an ssh key to p
 
 ~~~bash
 $ ssh-keygen -t ed25519 # Create a key - press enter each time you are prompted
-$ cat ~/.ssh/id_ed25519.pub # Copy the contents of this file 
+$ cat ~/.ssh/id_ed25519.pub # Copy the contents of this file
 ~~~
 
 Go to `User settings > SSH Keys` on your GitLab account or `User > Settings > SSH and GPG Keys` on GitHub. Click `Add new key` and copy the contents above into the `Key` area.  Give it a title and expiration date, then click `Add key`.
