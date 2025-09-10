@@ -26,7 +26,7 @@
 4. Python environments are managed with [uv](https://docs.astral.sh/uv/). By default, a "central" environment created in the root directory that contains Jupyter and MLFlow. The idea is that these can be executed as independent servers to which other code/process/environments can connect. To install this central environment:
 
    * Modify `.devcontainer/requirements.txt` to include any additional repositories and dependencies you might want.
-   * Run `bash .devcontainer/setup.sh` to finish setup.
+   * The command `bash .devcontainer/setup.sh` is run after the devcontainer is built to finish setup, but you can rerun this as needed if you modify `.devcontainer/requirements.txt` again in the future.
    * If you need to add or change anything in the future, use standard uv tools, like `uv add` to modify the central environment.  
 
 5. You can start the Jupyter and MLFlow servers without having to activate any environment (this is handled automatically by the scripts below). The commands below work fine for local installations, but watch for conflicts on the default ports if you are running multiple instances simultaneously. You can change these as needed in the respective `.devcontainer/start_*` files. Do the following from different terminals:
