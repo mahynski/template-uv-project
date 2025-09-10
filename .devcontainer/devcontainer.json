@@ -32,5 +32,6 @@
 	}
     },
     "remoteUser": "user",
-    "forwardPorts": [1234, 1235] // Explicitly forward Jupyter port and MLFlow out of the container
+    "forwardPorts": [1234, 1235], // Explicitly forward Jupyter port and MLFlow out of the container
+	"postCreateCommand": "bash ./.devcontainer/setup.sh",
 }
