@@ -14,7 +14,7 @@
    $ git push -u origin main # Push to new endpoint
    ~~~
 
-2. It is recommended that you open this in [VS Code](https://code.visualstudio.com/) and make use of [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) to create a containerized environment. While not necessary, the tools below are configured for this and work best under this setting. 
+2. It is recommended that you open this in [VS Code](https://code.visualstudio.com/) and make use of [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) to create a sandboxed environment. While not necessary, the tools below are configured for this and work best under this setting. 
 
 3. If you do not want to work in a devcontainer the instructions below will simply create a python virtual environment on your local machine. You will need to [install uv](https://docs.astral.sh/uv/getting-started/installation/) before proceeding, though. Otherwise, from the Command Palette, select ["Reopen in Container"](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container) to build your containerized environment with uv included. Here are some details to take care of first:
 
@@ -37,6 +37,14 @@
    ~~~
 
 6. To build projects in the future, it is recommended that you place them in the `projects/` directory. To make use of Jupyter, you can [install a kernel](https://docs.astral.sh/uv/guides/integration/jupyter/#creating-a-kernel) into the main server for each new project you create. Instructions are included below.
+
+## Using Claude
+
+This repo is configured to work with Claude Code. 
+* See `.claude/` to configure local settings and possibly specify AWS API keys if you are using Bedrock to provide inference. Otherwise, you can use Claude Code's setup instructions.
+* You can general instructions, design philosophy, and other high-level details and preferences you do not want to keep repeating in the `CLAUDE.md` file.
+* You can install [cstack](https://github.com/mahynski/cstack) to make use of more advanced Claude skills for automated software engineering.
+  * To support `cstack` I have included [bun](https://bun.sh/) in the Dockerfile - you can remove this if you do not intend to use `cstack`.
 
 ## Using UV
 
