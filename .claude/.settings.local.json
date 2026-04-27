@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_USE_BEDROCK": "1", // 1 if you want to use AWS bedrock as your Claude Code provider, otherwise 0
+    "AWS_REGION": "",
+    "ANTHROPIC_MODEL": "",
+    "AWS_BEARER_TOKEN_BEDROCK": ""
+  }
+}
