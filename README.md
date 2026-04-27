@@ -70,6 +70,12 @@ To (attempt to) update a single package while keeping the rest fixed:
 $ uv lock --upgrade-package package_of_interest
 ~~~
 
+To build an environment from a `uv.lock` file:
+
+~~~bash
+$ uv sync --frozen
+~~~
+
 You can further customize your `pyproject.toml` file to configure your project:
 * [General configuration guidelines](https://docs.astral.sh/uv/concepts/projects/config/#configuring-projects)
 * [Adding PyTorch](https://docs.astral.sh/uv/guides/integration/pytorch/)
@@ -143,6 +149,8 @@ This environment can be recreated later.
 ~~~bash
 $ uv pip install -r requirements.txt
 ~~~
+
+A `uv.lock` file is the preferred way to lock and sync a python environment, though.
 
 ## Accessing Endpoints
 
