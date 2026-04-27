@@ -38,7 +38,7 @@
 
 6. To build projects in the future, it is recommended that you place them in the `projects/` directory. To make use of Jupyter, you can [install a kernel](https://docs.astral.sh/uv/guides/integration/jupyter/#creating-a-kernel) into the main server for each new project you create. Instructions are included below.
 
-## Using Claude
+## Using [Claude Code]()
 
 This repo is configured to work with Claude Code. 
 * See `.claude/` to configure local settings and possibly specify AWS API keys if you are using Bedrock to provide inference. Otherwise, you can use Claude Code's setup instructions.
