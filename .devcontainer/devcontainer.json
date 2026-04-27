@@ -28,10 +28,16 @@
     "customizations": { // Configure tool-specific properties.
 		"vscode": { // Configure properties specific to VS Code.
 			"settings": {},
-			"extensions": []
+			"extensions": ["anthropic.claude-code"]
 		}
     },
     "remoteUser": "user",
     "forwardPorts": [1234, 1235], // Explicitly forward Jupyter port and MLFlow out of the container
-	"postCreateCommand": "bash ./.devcontainer/setup.sh"
+	"postCreateCommand": "bash ./.devcontainer/setup.sh",
+	// "containerEnv": { // mimics settings.local.json
+	// 	"CLAUDE_CODE_USE_BEDROCK": "1",
+	// 	"AWS_REGION": "",
+	// 	"ANTHROPIC_MODEL": "",
+	// 	"AWS_BEARER_TOKEN_BEDROCK": ""
+	// }
 }
