@@ -34,10 +34,7 @@
     "remoteUser": "user",
     "forwardPorts": [1234, 1235], // Explicitly forward Jupyter port and MLFlow out of the container
 	"postCreateCommand": "bash ./.devcontainer/setup.sh",
-	// "containerEnv": { // mimics settings.local.json
-	// 	"CLAUDE_CODE_USE_BEDROCK": "1",
-	// 	"AWS_REGION": "",
-	// 	"ANTHROPIC_MODEL": "",
-	// 	"AWS_BEARER_TOKEN_BEDROCK": ""
+	// "containerEnv": {
+	// 	"CLAUDE_CODE_USE_BEDROCK": "1", // 1 if you want to use AWS bedrock as your Claude Code provider, otherwise 0
 	// }
 }
