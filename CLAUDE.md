@@ -76,6 +76,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 * Include mathematical derivations to support any equations that seem to suddenly appear.
 * Always write unittests to thoroughly cover code you create.
 * When planning, do not execute code - just think and provide analysis.
+* Always use American English not British spellings
 
 ## Python Use
 
