@@ -5,7 +5,9 @@ project_dir="$(realpath $devcontainer_path/../)";
 project_name="$(basename $project_dir)";
 root_dir="$(realpath $project_dir/../)";
 cd $root_dir;
-uv init $project_name --bare --no-workspace;
+if [ ! -f "$project_dir/pyproject.toml" ]; then
+    uv init $project_name --bare --no-workspace;
+fi
 cd $project_dir;
 uv add mlflow jupyterlab pydantic-settings pre-commit "nbformat>=4.2";
 uv add -r $requirements;
