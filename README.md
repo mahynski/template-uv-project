@@ -14,7 +14,7 @@
    $ git push -u origin main # Push to new endpoint
    ~~~
 
-2. It is recommended that you open this in [VS Code](https://code.visualstudio.com/) and make use of [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) to create a sandboxed environment. While not necessary, the tools below are configured for this and work best under this setting. 
+2. It is recommended that you open this in [VS Code](https://code.visualstudio.com/) and make use of [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) to create a sandboxed environment. While not necessary, the tools below are configured for this and work best under this setting.
 
 3. If you do not want to work in a devcontainer the instructions below will simply create a python virtual environment on your local machine. You will need to [install uv](https://docs.astral.sh/uv/getting-started/installation/) before proceeding, though. Otherwise, from the Command Palette, select ["Reopen in Container"](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container) to build your containerized environment with uv included. Here are some details to take care of first:
 
@@ -27,7 +27,7 @@
 
    * Modify `.devcontainer/requirements.txt` to include any additional repositories and dependencies you might want.
    * The command `bash .devcontainer/setup.sh` is run after the devcontainer is built to finish setup, but you can rerun this as needed if you modify `.devcontainer/requirements.txt` again in the future.
-   * If you need to add or change anything in the future, use standard uv tools, like `uv add` to modify the central environment.  
+   * If you need to add or change anything in the future, use standard uv tools, like `uv add` to modify the central environment.
 
 5. You can start the Jupyter and MLFlow servers without having to activate any environment (this is handled automatically by the scripts below). The commands below work fine for local installations, but watch for conflicts on the default ports if you are running multiple instances simultaneously. You can change these as needed in the respective `.devcontainer/start_*` files. Do the following from different terminals:
 
@@ -40,7 +40,7 @@
 
 ## Using [Claude Code]()
 
-This repo is configured to work with Claude Code. 
+This repo is configured to work with Claude Code.
 * See `.claude/` to configure local settings and possibly specify AWS API keys if you are using Bedrock to provide inference. Otherwise, you can use Claude Code's setup instructions.
 * You can general instructions, design philosophy, and other high-level details and preferences you do not want to keep repeating in the `CLAUDE.md` file.
 * You can install [cstack](https://github.com/mahynski/cstack) to make use of more advanced Claude skills for automated software engineering.
@@ -164,6 +164,6 @@ This `.crt` file can be stored in the `.ignore/` folder if necessary.
 
 ## Contributors
 
-Update the CITATION.cff file to enable appropriate citations.  
+Update the CITATION.cff file to enable appropriate citations.
 
 The logo for this repository (logo.png) was generated using Google Gemini 2.0 Flash (Imagen 3) on Feb. 19, 2025 with the prompt "Create a logo of a robotic bird being designed and templated by a robot in a factory."

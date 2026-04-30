@@ -1,6 +1,6 @@
 # General Instructions
 
-Behavioral guidelines to reduce common LLM coding mistakes. 
+Behavioral guidelines to reduce common LLM coding mistakes.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
@@ -71,7 +71,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 * This code is not in production (yet) so when designing new features we do not need to worry about maintaining backward compatibility. Instead, when making changes build clean, straightforward code that is easily maintainable by humans.
 * Follow best practices for software engineering.
 * Code should be concise and easy to maintain for humans. Do not overcomplicate or overengineer solutions.
-* Always include clear, concise documentation in the code to explain non-trivial logic. 
+* Always include clear, concise documentation in the code to explain non-trivial logic.
 * Python documentation should follow numpy style.
 * Include mathematical derivations to support any equations that seem to suddenly appear.
 * When adding features, write unittests to thoroughly cover new code you create.
@@ -83,4 +83,3 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 * Use the uv virtual python environment under the top level directory for python and access to installed dependencies.
 
 ## Code Description
-
