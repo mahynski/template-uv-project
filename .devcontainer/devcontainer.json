@@ -15,14 +15,14 @@
         "dockerfile": "Dockerfile",
         "context": "..", // This allows Docker to start one directory up so it can see the conda-env.yml file
         "args": {
-		    "UID":1000, 
+		    "UID":1000,
 		    "GID":1000
 		}, // User and Group IDs - change these to match yours in the base system - this way you own the files you create when the the image shuts down
     },
     "hostRequirements": {
-		"gpu": "optional", 
-		"cpus": 2, 
-		"memory": "4gb", 
+		"gpu": "optional",
+		"cpus": 2,
+		"memory": "4gb",
 		"storage": "32gb"
     },
     "customizations": { // Configure tool-specific properties.

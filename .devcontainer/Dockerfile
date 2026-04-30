@@ -26,7 +26,7 @@ USER user
 
 # Needed for cstack if not planning to use this, you can ignore
 # -------------------------------------------------------------
-# Install Bun as the user 
+# Install Bun as the user
 RUN curl -fsSL https://bun.sh/install | bash
 
 # Add Bun to PATH
