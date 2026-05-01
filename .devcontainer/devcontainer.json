@@ -13,11 +13,7 @@
     ],
     "build": {
         "dockerfile": "Dockerfile",
-        "context": "..", // This allows Docker to start one directory up so it can see the conda-env.yml file
-    //    "args": {
-	//	    "UID":1000,
-	//	    "GID":1000
-	//	}, // User and Group IDs - change these to match yours in the base system - this way you own the files you create when the the image shuts down
+        "context": ".." // This allows Docker to start one directory up so it can see the conda-env.yml file
     },
     "hostRequirements": {
 		"gpu": "optional",
