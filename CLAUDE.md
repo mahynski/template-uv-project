@@ -60,6 +60,14 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Keep CLAUDE.md Current
+
+**Keep this (CLAUDE.md) file up to date.**
+
+When a fundamentally new capability or design philosophy is added, record it here so futurw work is consistent.
+
+If there is any inconsistency between what you are building and this file, ask the user for clarification.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
