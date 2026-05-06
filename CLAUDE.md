@@ -91,3 +91,5 @@ If there is any inconsistency between what you are building and this file, ask t
 * Use the uv virtual python environment under the top level directory for python and access to installed dependencies.
 
 ## Code Description
+
+<Insert code contracts here>
