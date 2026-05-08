@@ -15,8 +15,8 @@ ENV TZ=America/New_York
 
 # Create a user with a given User and Group ID
 # https://vsupalov.com/docker-shared-permissions/
-RUN addgroup --gid $GID user
-RUN adduser --disabled-password --gecos '' --uid $UID --gid $GID user
+RUN addgroup --gid 1000 user
+RUN adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
 
 # SHELL ["/bin/bash", "--login", "-c"]
 
