@@ -64,7 +64,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 **Keep this (CLAUDE.md) file up to date.**
 
-When a fundamentally new capability or design philosophy is added, record it here so futurw work is consistent.
+When a fundamentally new capability or design philosophy is added, record it here so future work is consistent.
 
 If there is any inconsistency between what you are building and this file, ask the user for clarification.
 
