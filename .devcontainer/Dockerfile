@@ -22,12 +22,12 @@ RUN adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
 
 USER user
 
-# Needed for cstack if not planning to use this, you can ignore
+# Needed for cstack - if planning to use this, uncomment below
 # -------------------------------------------------------------
-# Install Bun as the user
-RUN curl -fsSL https://bun.sh/install | bash
+# # Install Bun as the user
+# RUN curl -fsSL https://bun.sh/install | bash
 
-# Add Bun to PATH
-ENV BUN_INSTALL="/home/user/.bun"
-ENV PATH="$BUN_INSTALL/bin:$PATH"
+# # Add Bun to PATH
+# ENV BUN_INSTALL="/home/user/.bun"
+# ENV PATH="$BUN_INSTALL/bin:$PATH"
 # -------------------------------------------------------------
