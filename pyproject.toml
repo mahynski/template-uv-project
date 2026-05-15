@@ -9,6 +9,28 @@ dev = [
     "pytest>=9.0.3",
     "pytest-cov>=7.1.0",
 ]
+# Python dependencies for the bundled Anthropic document skills under
+# .claude/skills/{docx,pptx,xlsx,pdf}. Install with: `uv sync --group skills`.
+# Note: some skills also need system binaries (LibreOffice/soffice, poppler,
+# tesseract) and optional Node packages (`docx`, `pptxgenjs`); those are not
+# Python deps and must be installed separately.
+skills = [
+    # shared office (docx/pptx/xlsx) validators and helpers
+    "lxml",
+    "defusedxml",
+    # pptx
+    "Pillow",
+    "markitdown[pptx]",
+    # xlsx
+    "openpyxl",
+    # pdf
+    "pypdf",
+    "pdfplumber",
+    "pdf2image",
+    "pypdfium2",
+    "pytesseract",
+    "reportlab",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
