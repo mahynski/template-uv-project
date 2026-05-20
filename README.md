@@ -20,7 +20,7 @@
 
    * Install the "Dev Containers" Extension in VS Code.
    * Change the `UID` and `GID` in `.devcontainer/Dockerfile` if needed.
-   * Optional: If you want to connect to other containers, e.g., running ollama for code assitance in [Continue](https://docs.continue.dev/), you might need to consider [Docker networking](https://docs.docker.com/engine/network/tutorials/standalone/). You can skip this in which case ollama will bind to your localhost at your chosen port on the default "bridge" network, which is acceptable on personal devices. Moreover, the default `devcontainer.json` file specifies `"--network=host"` in `runArgs` which uses the host networking when the container is running, which should enable this automatically.
+   * Optional: If you want to connect to other containers, e.g., running ollama for code assistance in [Continue](https://docs.continue.dev/), you might need to consider [Docker networking](https://docs.docker.com/engine/network/tutorials/standalone/). You can skip this in which case ollama will bind to your localhost at your chosen port on the default "bridge" network, which is acceptable on personal devices. Moreover, the default `devcontainer.json` file specifies `"--network=host"` in `runArgs` which uses the host networking when the container is running, which should enable this automatically.
    * Add [additional arguments](https://containers.dev/implementors/json_reference/) as needed, e.g., "runArgs": ["--gpus", "all"] to [access host gpus](https://stackoverflow.com/questions/25185405/using-gpu-from-a-docker-container). This is helpful if you are doing deep learning in the container/project. You may have to install the appropriate drivers first.
 
 4. Python environments are managed with [uv](https://docs.astral.sh/uv/). By default, a "central" environment created in the root directory that contains Jupyter and MLFlow. The idea is that these can be executed as independent servers to which other code/process/environments can connect. To install this central environment:
@@ -38,11 +38,11 @@
 
 6. To build projects in the future, it is recommended that you place them in the `projects/` directory. To make use of Jupyter, you can [install a kernel](https://docs.astral.sh/uv/guides/integration/jupyter/#creating-a-kernel) into the main server for each new project you create. Instructions are included below.
 
-## Using [Claude Code]()
+## Using [Claude Code](https://docs.claude.com/en/docs/claude-code/overview)
 
 This repo is configured to work with Claude Code.
 * See `.claude/` to configure local settings and possibly specify AWS API keys if you are using Bedrock to provide inference. Otherwise, you can use Claude Code's setup instructions.
-* You can general instructions, design philosophy, and other high-level details and preferences you do not want to keep repeating in the `CLAUDE.md` file.
+* You can add general instructions, design philosophy, and other high-level details and preferences you do not want to keep repeating in the `CLAUDE.md` file.
 * You can install [cstack](https://github.com/mahynski/cstack) to make use of more advanced Claude skills for automated software engineering.
   * To support `cstack` I have included [bun](https://bun.sh/) in the Dockerfile - you can remove this if you do not intend to use `cstack`.
 
@@ -116,7 +116,7 @@ $ uv add --dev ipykernel # From inside the project directory
 $ uv run ipython kernel install --user --env VIRTUAL_ENV $ROOT/.venv --name=new_project # Install the local venv into the server running at ROOT
 ~~~
 
-Anything you install in the notebook will be installed in the environment but will not be reflected in the `pyproject.toml` file until you `uv sync` that project directory.  Anything you install "normally", e.g., via `uv add`, will be avilable in Jupyter notebooks running this kernel.
+Anything you install in the notebook will be installed in the environment but will not be reflected in the `pyproject.toml` file until you `uv sync` that project directory.  Anything you install "normally", e.g., via `uv add`, will be available in Jupyter notebooks running this kernel.
 
 ## Setup SSH Keys
 
