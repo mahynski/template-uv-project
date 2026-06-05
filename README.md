@@ -60,7 +60,7 @@ This repo is configured to work with Claude Code.
 7. `[REFINE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
    *  Repeat the `/bug-review` procedure to handle each issue raised.
 9. `[REFINE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
-   * This won't refactor any code, but if coverage remains stubbornly low, you can ask Claude if refactorin will needed. If so, you can use `/code-review` to help with this.
+   * This won't refactor any code, but if coverage remains stubbornly low, you can ask Claude if refactoring will be necessary. If so, you can use `/code-review` to help with this.
 10. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
 11. `[FINALIZE]:` Perform unittests, linting, etc. to make sure CI/CD pipelines will run, then ship it!
 
