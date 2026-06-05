@@ -56,7 +56,7 @@ This repo is configured to work with Claude Code.
 5. `[REFINE]:` `/bug-review` looks for implementation errors.
    * This skill is very sensitive to possible issues and will often surface false positives since this is better than missing any true positives.
    * When complete, I save the review to a file, then separately highlight each "bug" and ask Claude to double check that it is actually a bug in a new session.
-   * This creates a second opinion and helps dive deeper on real bugs and screens out the false positives. 
+   * This creates a second opinion and helps dive deeper on real bugs and screens out the false positives.
 7. `[REFINE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
    *  Repeat the `/bug-review` procedure to handle each issue raised.
 9. `[REFINE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
