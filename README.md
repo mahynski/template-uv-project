@@ -59,7 +59,7 @@ This repo is configured to work with Claude Code.
 8. `[OPTIMIZE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
    * This won't refactor any code, but if coverage remains stubbornly low, you can ask Claude if refactorin will needed. If so, you can use `/code-review` to help with this.
 9. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
-10. `[FINALIZE]:` Perform linting, etc. to make sure CI/CD pipelines will run, then ship it!
+10. `[FINALIZE]:` Perform unittests, linting, etc. to make sure CI/CD pipelines will run, then ship it!
 
 ## Using UV
 
