@@ -54,10 +54,11 @@ This repo is configured to work with Claude Code.
 3. `[REFINE]:` `/scientific-reviewer` evaluates this at an idealogical level - is this SOTA, are there other developments we should be aware, do we need citations?
 4. `[CREATE]:` (Optional) `/mental-model` creates a simple mental model to help you understand how the new components work together which can reveal unexpected choices the agent made on your behalf.
 5. `[REFINE]:` `/bug-review` looks for implementation errors.
-6. `[OPTIMIZE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
-7. `[OPTIMIZE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
-8. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
-9. `[FINALIZE]:` Perform linting, etc. to make sure CI/CD pipelines will run, then ship it!
+  * At this point, I save the review to a file, then select each "bug" and ask Claude to double check it actually is a bug in a new session. This creates a second opinion and helps dive deeper on real bugs and catches the false positives. The latter often happen because Claude only looks at chunks of code at a time during the initial review instead of seeing everything holistically.
+7. `[OPTIMIZE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
+8. `[OPTIMIZE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
+9. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
+10. `[FINALIZE]:` Perform linting, etc. to make sure CI/CD pipelines will run, then ship it!
 
 ## Using UV
 
