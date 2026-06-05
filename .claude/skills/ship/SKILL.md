@@ -9,7 +9,12 @@ Take the current working tree from "uncommitted changes" to "open PR with CI wat
 
 ## Prerequisites
 
-- **GitHub MCP server must be available** (`mcp__github__*` tools). If it isn't, stop and tell the user to enable it — without it you cannot open a PR or subscribe to CI.
+- **A GitHub MCP server must be available** (`mcp__github__*` tools). Use whichever one is already present — no token setup is required:
+  - In Claude Code on the web and the claude.ai-connected desktop app, it is provided automatically by the GitHub connector.
+  - Only a plain terminal `claude` session (not connected to claude.ai) lacks it; there, the user enables it once via `claude mcp add` or a `.mcp.json` with their own `${GITHUB_PAT}`.
+  - Do **not** add a project-scoped `.mcp.json` `github` entry to "fix" a missing server: a project entry overrides the connector-provided one, and an unset `GITHUB_PAT` makes Claude Code fail to parse the config.
+
+  If no `mcp__github__*` tools are available, stop and tell the user how to enable one (above) — without it you cannot open a PR or subscribe to CI.
 - A clean understanding of the remote: the repo must have an `origin` and a `main` branch.
 
 ## Procedure
