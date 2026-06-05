@@ -46,6 +46,19 @@ This repo is configured to work with Claude Code.
 * You can install [cstack](https://github.com/mahynski/cstack) to make use of more advanced Claude skills for automated software engineering.
   * To support `cstack` I have included [bun](https://bun.sh/) in the Dockerfile - you can remove this if you do not intend to use `cstack`.
 
+`cstack` is inspired by `gstack` and is more geared toward product development instead of research and development. This repo includes other skills I use for the latter more often; the skill names do not conflict so installing `cstack` will not clobber any of these. Here is my typical workflow:
+
+0. `[CREATE]:` Create a new branch (if not starting from scratch).
+1. `[CREATE]:` (Optional) `/teach` helps educate you about a subject area if you want to add capabilities you are not familiar with.
+2. `[CREATE]:` `/idea-helper` helps refine your initial concept. This builds a plan which you can choose to implement, or do it piecemeal.
+3. `[REFINE]:` `/scientific-reviewer` evaluates this at an idealogical level - is this SOTA, are there other developments we should be aware, do we need citations?
+4. `[CREATE]:` (Optional) `/mental-model` creates a simple mental model to help you understand how the new components work together which can reveal unexpected choices the agent made on your behalf.
+5. `[REFINE]:` `/bug-review` looks for implementation errors.
+6. `[OPTIMIZE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
+7. `[OPTIMIZE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
+8. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
+9. `[FINALIZE]:` Perform linting, etc. to make sure CI/CD pipelines will run, then ship it!
+
 ## Using UV
 
 ### General Philosophy of UV Projects
