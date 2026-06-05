@@ -48,7 +48,7 @@ This repo is configured to work with Claude Code.
 
 `cstack` is inspired by `gstack` and is more geared toward product development instead of research and development. This repo includes other skills I use for the latter more often; the skill names do not conflict so installing `cstack` will not clobber any of these. Here is my typical workflow:
 
-0. `[CREATE]:` Create a new branch (if not starting from scratch).
+0. `[CREATE]:` Create a new branch (if not starting from scratch). Most skills below try to focus on branch diffs so it is helpful to start this way.
 1. `[CREATE]:` (Optional) `/teach` helps educate you about a subject area if you want to add capabilities you are not familiar with.
 2. `[CREATE]:` `/idea-helper` helps refine your initial concept. This builds a plan which you can choose to implement, or do it piecemeal.
 3. `[REFINE]:` `/scientific-reviewer` evaluates this at an idealogical level - is this SOTA, are there other developments we should be aware, do we need citations?
