@@ -62,7 +62,8 @@ This repo is configured to work with Claude Code.
 9. `[REFINE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
    * This won't refactor any code, but if coverage remains stubbornly low, you can ask Claude if refactoring will be necessary. If so, you can use `/code-review` to help with this.
 10. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
-11. `[FINALIZE]:` Perform unittests, linting, etc. to make sure CI/CD pipelines will run, then ship it!
+11. `[FINALIZE]:` Perform unittests, linting, etc. to make sure CI/CD pipelines will pass.
+12. `[FINALIZE]:` `/ship` to open a PR and subscribe to CI/CD and autofix safe issues (major ones will prompt for assistance).
 
 ## Using UV
 
