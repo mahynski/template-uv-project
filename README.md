@@ -57,8 +57,8 @@ This repo is configured to work with Claude Code.
    * This skill is very sensitive to possible issues and will often surface false positives since this is better than missing any true positives.
    * When complete, I save the review to a file, then separately highlight each "bug" and ask Claude to double check that it is actually a bug in a new session.
    * This creates a second opinion and helps dive deeper on real bugs and screens out the false positives. 
-7. `[OPTIMIZE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
-8. `[OPTIMIZE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
+7. `[REFINE]:` `/code-review` (included in Claude Code, not a specific skill here) looks at code design and hygiene.
+8. `[REFINE]:` `/coverage` adds unittests to ensure your code is well thought out and working as intended.
    * This won't refactor any code, but if coverage remains stubbornly low, you can ask Claude if refactorin will needed. If so, you can use `/code-review` to help with this.
 9. `[FINALIZE]:` `/check-contracts` makes sure `Claude.md` is up to date with the additions you have just made.
 10. `[FINALIZE]:` Perform unittests, linting, etc. to make sure CI/CD pipelines will run, then ship it!
