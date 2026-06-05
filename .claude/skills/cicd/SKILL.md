@@ -1,5 +1,5 @@
 ---
-name: ci-check
+name: cicd
 description: Run the project's CI/CD checks locally to confirm the pipeline will pass before pushing — mirrors every job in .github/workflows/ (pre-commit/ruff, pytest, pip-audit, mypy if configured) and runs pre-commit if it is enabled. Use when the user says "run CI locally", "check CI will pass", "validate the pipeline", "run all the checks", "preflight", "make sure CI passes", or similar.
 ---
 
@@ -42,7 +42,7 @@ Run independent checks and capture each one's exit code and output. A non-zero e
 
 ### 3. Handle checks that can't run locally
 
-Some CI jobs have no faithful local equivalent — e.g. **CodeQL** (`codeql.yml`) needs the GitHub CodeQL action/runner. Do not fake these. List them as `SKIPPED (not reproducible locally)` with a one-line reason so the report is honest about coverage.
+Some CI jobs may have no faithful local equivalent (e.g. ones requiring a hosted GitHub runner or external service). Do not fake these. List them as `SKIPPED (not reproducible locally)` with a one-line reason so the report is honest about coverage.
 
 ### 4. Report
 
@@ -51,14 +51,13 @@ Produce one scannable summary:
 ```
 ## CI Preflight — will the pipeline pass?
 
-Source: .github/workflows/{ci.yml, codeql.yml}, .pre-commit-config.yaml
+Source: .github/workflows/ci.yml, .pre-commit-config.yaml
 
 | Check        | Mirrors          | Result |
 | ------------ | ---------------- | ------ |
 | pre-commit   | ci.yml: lint     | PASS   |
 | pytest       | ci.yml: test     | FAIL   |
 | pip-audit    | ci.yml: security | PASS   |
-| codeql       | codeql.yml       | SKIPPED (needs GitHub CodeQL runner) |
 
 Verdict: NOT READY — pytest failing.
 
@@ -81,6 +80,6 @@ If the user does ask for fixes:
 
 - **Mirror CI; don't invent checks.** Only run what the repo actually configures. If mypy isn't a configured hook or command, don't run mypy.
 - **Use `uv`** for all Python execution (CLAUDE.md). Don't install global tools or new dependencies to make a check run — if a required tool is missing, report that instead.
-- **Be honest about coverage:** clearly mark matrix interpreters you didn't run and jobs (CodeQL) you can't reproduce locally. Never report PASS for something you skipped.
+- **Be honest about coverage:** clearly mark matrix interpreters you didn't run and any jobs you can't reproduce locally. Never report PASS for something you skipped.
 - **Read-only by default.** Don't commit, push, or open a PR — that's `/ship`'s job. This skill stops at the verdict unless the user explicitly asks to fix or ship.
 - **Don't swallow failures.** Report the first actionable lines of each failing check with `file:line` so the user can jump straight to the problem.
