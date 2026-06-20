@@ -89,6 +89,21 @@ NEON = (134, 239, 172)          # #86efac signature neon green (hero + dark titl
 NEON_BRIGHT = (190, 250, 213)   # lighter core that sells the glow
 DEEP_GREEN = (21, 128, 61)      # #15803d title color for the light variant
 
+# badge geometry -- FIXED brand frame; identical for every repo. The central
+# glass rectangle never resizes; the hero scales to fit BADGE_INNER, the badge
+# never grows to fit the hero.
+BADGE_SIZE = 600 * SS                       # side length of the glass square
+BADGE_TOP = 165 * SS                        # distance from canvas top
+BADGE_RADIUS = 132 * SS                     # corner radius
+BADGE_X0 = W // 2 - BADGE_SIZE // 2         # centered horizontally
+BADGE_Y0 = BADGE_TOP
+BADGE_X1 = BADGE_X0 + BADGE_SIZE
+BADGE_Y1 = BADGE_Y0 + BADGE_SIZE
+BADGE_BOX = [BADGE_X0, BADGE_Y0, BADGE_X1, BADGE_Y1]
+HERO_MARGIN = 118 * SS                       # inset of the hero frame from edge
+HERO_BOX = (BADGE_X0 + HERO_MARGIN, BADGE_Y0 + HERO_MARGIN,
+            BADGE_X1 - HERO_MARGIN, BADGE_Y1 - HERO_MARGIN)
+
 _HERE = os.path.dirname(os.path.abspath(__file__))
 FONT_JOST = os.path.join(_HERE, 'fonts', 'Jost[wght].ttf')
 FONT_MONO = os.path.join(_HERE, 'fonts', 'SpaceMono-Regular.ttf')
@@ -125,43 +140,42 @@ def render(theme):
 
     draw = ImageDraw.Draw(img)
 
-    # --- badge geometry ---
-    B = 600 * SS
-    bx0, by0 = W // 2 - B // 2, int(165 * SS)
-    bx1, by1 = bx0 + B, by0 + B
-    rad = int(132 * SS)
+    # The badge uses the FIXED module-level geometry (BADGE_BOX) in every
+    # variant, so the central glass rectangle is the exact same size and
+    # position regardless of theme, hero, or title.
 
     # --- depth behind the badge: shadow (light) or neon halo (dark) ---
     if theme == 'light':
         shadow = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         ImageDraw.Draw(shadow).rounded_rectangle(
-            [bx0, by0 + 16 * SS, bx1, by1 + 16 * SS], rad, fill=(20, 24, 30, 90))
+            [BADGE_X0, BADGE_Y0 + 16 * SS, BADGE_X1, BADGE_Y1 + 16 * SS],
+            BADGE_RADIUS, fill=(20, 24, 30, 90))
         img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(46 * SS)))
     else:
         halo = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        ImageDraw.Draw(halo).rounded_rectangle([bx0, by0, bx1, by1], rad, fill=(*NEON, 90))
+        ImageDraw.Draw(halo).rounded_rectangle(BADGE_BOX, BADGE_RADIUS, fill=(*NEON, 90))
         img.alpha_composite(halo.filter(ImageFilter.GaussianBlur(55 * SS)))
 
     # --- glass body (dark in BOTH themes) ---
     mask = Image.new('L', (W, H), 0)
-    ImageDraw.Draw(mask).rounded_rectangle([bx0, by0, bx1, by1], rad, fill=255)
+    ImageDraw.Draw(mask).rounded_rectangle(BADGE_BOX, BADGE_RADIUS, fill=255)
     img.paste(vgrad(GLASS_TOP, GLASS_BOT).convert('RGBA'), (0, 0), mask)
 
     # --- top gloss sheen ---
     gloss = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(gloss).rounded_rectangle(
-        [bx0, by0, bx1, by0 + int(B * 0.46)], rad, fill=(255, 255, 255, 26))
+        [BADGE_X0, BADGE_Y0, BADGE_X1, BADGE_Y0 + int(BADGE_SIZE * 0.46)],
+        BADGE_RADIUS, fill=(255, 255, 255, 26))
     gloss = gloss.filter(ImageFilter.GaussianBlur(26 * SS))
     img.paste(gloss, (0, 0),
               Image.composite(gloss.getchannel('A'), Image.new('L', (W, H), 0), mask))
 
     # --- neon hairline border ---
-    draw.rounded_rectangle([bx0, by0, bx1, by1], rad, outline=(*NEON, 70), width=2 * SS)
+    draw.rounded_rectangle(BADGE_BOX, BADGE_RADIUS, outline=(*NEON, 70), width=2 * SS)
 
-    # --- hero glyph + glow ---
+    # --- hero glyph + glow (drawn inside the fixed HERO_BOX) ---
     mark = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    fm = int(118 * SS)
-    draw_hero(ImageDraw.Draw(mark), (bx0 + fm, by0 + fm, bx1 - fm, by1 - fm), NEON)
+    draw_hero(ImageDraw.Draw(mark), HERO_BOX, NEON)
     for blur, alpha in [(34 * SS, 150), (16 * SS, 150), (6 * SS, 120)]:
         g = mark.filter(ImageFilter.GaussianBlur(blur))
         g.putalpha(g.getchannel('A').point(lambda a: min(255, a * alpha // 255)))
@@ -177,7 +191,7 @@ def render(theme):
     while draw.textlength(TITLE, font=font) > int(1010 * SS) and size > 40:
         size -= 2 * SS
         font = jost(size, weight=500)
-    ty = by1 + int(108 * SS)
+    ty = BADGE_Y1 + int(108 * SS)
     tx = W // 2 - draw.textlength(TITLE, font=font) / 2
     if theme == 'light':
         draw.text((tx, ty), TITLE, font=font, fill=DEEP_GREEN)

@@ -61,8 +61,12 @@ minimal-hue philosophy.
 ### Geometry (at 1x; render at 2x supersample, then downscale with LANCZOS)
 
 - Canvas `1590 x 1098`.
-- Badge: `600 x 600` square, centered horizontally, top edge at `y = 165`,
-  corner radius `132`.
+- **Badge (fixed): `600 x 600` square, centered horizontally, top edge at
+  `y = 165`, corner radius `132`.** This central glass rectangle is a constant
+  of the brand frame — it is the same size and position in every variant and
+  every repo, and must not be resized to fit the hero or title. In
+  `make_logo.py` it is the module-level `BADGE_*` constants; the hero scales to
+  fit `HERO_BOX`, never the reverse.
 - Neon hairline border: `#86efac` at alpha 70, width 2.
 - Top gloss: white at alpha ~26 over the upper 46% of the badge, blurred.
 - Hero sits inside a `118` px inner margin from the badge edge.
