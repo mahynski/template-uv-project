@@ -2,7 +2,10 @@
 
 ## Initial Setup
 
-<img src="logo.png" align="right" width=200 />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="logo-dark.png" />
+  <img src="logo-light.png" align="right" width=200 alt="template-uv-project logo" />
+</picture>
 
 1. Use this repo as a template to create a new repo on GitHub. Name the repo with a 4 digit year-of-initiation prefix, e.g., "2022-". Convention is to use hyphens between words and all lower case. You can also "copy" the repo by cloning, creating a new origin, then pushing to it. This can be used to, e.g., migrate to a GitLab server.
 
@@ -185,4 +188,4 @@ This `.crt` file can be stored in the `.ignore/` folder if necessary.
 
 Update the CITATION.cff file to enable appropriate citations.
 
-The logo for this repository (logo.png) was generated using Google Gemini 2.0 Flash (Imagen 3) on Feb. 19, 2025 with the prompt "Create a logo of a robotic bird being designed and templated by a robot in a factory."
+The logo for this repository (logo-light.png / logo-dark.png) was generated with Claude Code on Jun. 20, 2026.
